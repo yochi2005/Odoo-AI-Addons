@@ -2,18 +2,18 @@
 
 AI-powered modules for Odoo using Claude (Anthropic) integration.
 
-## 📦 Modules
+## Modules
 
 ### odoo_ai_tools - Claude Integration
 
 AI assistant for Odoo 18.2+ that uses **Claude** (Anthropic) with **tool calling** and **Odoo Web API**.
 
 **Features:**
-- 📊 **Sales Reports** - Generate reports from natural language
-- 📄 **Invoice Creation** - Auto-create draft invoices from sales orders
-- 💰 **Tax Deductions (Mexico)** - Suggest SAT-compliant deductible expenses
-- 📋 **Quotation Summary** - Intelligent follow-up with urgency analysis
-- 📦 **Inventory Restock** - Detect products needing restock based on sales velocity
+- **Sales Reports** - Generate reports from natural language
+- **Invoice Creation** - Auto-create draft invoices from sales orders
+- **Tax Deductions (Mexico)** - Suggest SAT-compliant deductible expenses
+- **Quotation Summary** - Intelligent follow-up with urgency analysis
+- **Inventory Restock** - Detect products needing restock based on sales velocity
 
 **Architecture:**
 - Uses Anthropic Claude API for natural language understanding
@@ -25,7 +25,7 @@ AI assistant for Odoo 18.2+ that uses **Claude** (Anthropic) with **tool calling
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Requirements
 - Odoo 18.2+
@@ -61,7 +61,7 @@ pip install anthropic
 
 ---
 
-## 📖 Documentation
+## Documentation
 
 Each module contains detailed documentation:
 - **README.md** - Features, usage examples, architecture
@@ -69,7 +69,7 @@ Each module contains detailed documentation:
 
 ---
 
-## 🔒 Security
+## Security
 
 - All tools respect Odoo user permissions
 - API-only access (no direct database queries)
@@ -78,13 +78,13 @@ Each module contains detailed documentation:
 
 ---
 
-## 📝 License
+## License
 
 LGPL-3
 
 ---
 
-## 👥 Contributing
+## Contributing
 
 Contributions are welcome! Please ensure:
 - No direct database access (use Odoo Web API only)
