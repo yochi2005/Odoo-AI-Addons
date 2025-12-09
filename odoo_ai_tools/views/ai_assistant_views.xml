@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- AI Assistant Form View -->
+    <record id="view_ai_assistant_form" model="ir.ui.view">
+        <field name="name">ai.assistant.form</field>
+        <field name="model">ai.assistant</field>
+        <field name="arch" type="xml">
+            <form string="AI Assistant">
+                <header>
+                    <button name="action_send_message"
+                            string="Send to Claude"
+                            type="object"
+                            class="oe_highlight"
+                            invisible="assistant_response"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Conversation Title"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="user_id" readonly="1"/>
+                            <field name="create_date" readonly="1"/>
+                            <field name="success" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="anthropic_api_key" password="True"
+                                   placeholder="sk-ant-..."/>
+                        </group>
+                    </group>
+
+                    <group string="Your Message">
+                        <field name="user_message" nolabel="1"
+                               placeholder="Ask Claude to help with Odoo tasks...&#10;&#10;Examples:&#10;- Generate a sales report by product from March to July&#10;- Create invoices for the last 3 sales&#10;- What expenses can be tax deductible?&#10;- Which quotations need follow-up this week?&#10;- What products should I order before Friday?"
+                               widget="text"/>
+                    </group>
+
+                    <group string="Assistant Response" invisible="not assistant_response">
+                        <field name="assistant_response" nolabel="1"
+                               widget="text" readonly="1"/>
+                    </group>
+
+                    <group string="Tools Used" invisible="not tools_used">
+                        <field name="tools_used" nolabel="1"
+                               widget="text" readonly="1"/>
+                    </group>
+
+                    <group string="Error" invisible="not error_message">
+                        <field name="error_message" nolabel="1"
+                               widget="text" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- AI Assistant Tree View -->
+    <record id="view_ai_assistant_tree" model="ir.ui.view">
+        <field name="name">ai.assistant.tree</field>
+        <field name="model">ai.assistant</field>
+        <field name="arch" type="xml">
+            <tree string="AI Conversations">
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="create_date"/>
+                <field name="success"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- AI Assistant Search View -->
+    <record id="view_ai_assistant_search" model="ir.ui.view">
+        <field name="name">ai.assistant.search</field>
+        <field name="model">ai.assistant</field>
+        <field name="arch" type="xml">
+            <search string="Search Conversations">
+                <field name="name"/>
+                <field name="user_message"/>
+                <field name="user_id"/>
+                <filter name="my_conversations" string="My Conversations"
+                        domain="[('user_id', '=', uid)]"/>
+                <filter name="successful" string="Successful"
+                        domain="[('success', '=', True)]"/>
+                <filter name="with_errors" string="With Errors"
+                        domain="[('error_message', '!=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_user" string="User"
+                            context="{'group_by': 'user_id'}"/>
+                    <filter name="group_date" string="Date"
+                            context="{'group_by': 'create_date:day'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- AI Assistant Config Form -->
+    <record id="view_ai_assistant_config_form" model="ir.ui.view">
+        <field name="name">ai.assistant.config.form</field>
+        <field name="model">ai.assistant.config</field>
+        <field name="arch" type="xml">
+            <form string="AI Assistant Configuration">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Configure AI Assistant</h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="anthropic_api_key" password="True"
+                                   placeholder="sk-ant-..."/>
+                        </group>
+                        <group>
+                            <field name="user_password" password="True"/>
+                        </group>
+                    </group>
+                    <group string="Test Connection">
+                        <field name="test_message"/>
+                    </group>
+                    <footer>
+                        <button name="action_test_connection"
+                                string="Test Connection"
+                                type="object"
+                                class="oe_highlight"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_ai_assistant" model="ir.actions.act_window">
+        <field name="name">AI Assistant</field>
+        <field name="res_model">ai.assistant</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_my_conversations': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Start a conversation with Claude AI
+            </p>
+            <p>
+                Ask Claude to help you with Odoo tasks using natural language.
+                Claude can generate reports, create invoices, analyze expenses, and more.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_ai_assistant_config" model="ir.actions.act_window">
+        <field name="name">AI Assistant Configuration</field>
+        <field name="res_model">ai.assistant.config</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_ai_assistant_root"
+              name="AI Assistant"
+              sequence="100"/>
+
+    <menuitem id="menu_ai_assistant"
+              name="Conversations"
+              parent="menu_ai_assistant_root"
+              action="action_ai_assistant"
+              sequence="10"/>
+
+    <menuitem id="menu_ai_assistant_config"
+              name="Configuration"
+              parent="menu_ai_assistant_root"
+              action="action_ai_assistant_config"
+              sequence="100"/>
+
+</odoo>

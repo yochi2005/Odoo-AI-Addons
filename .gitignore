@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Odoo
+*.pyc
+*.pyo
+.DS_Store
+filestore/
+
+# Credentials and sensitive data
+*.key
+*.pem
+.env
+secrets/
+credentials.json
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+.cache/
