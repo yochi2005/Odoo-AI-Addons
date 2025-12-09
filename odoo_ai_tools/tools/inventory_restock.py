@@ -96,14 +96,31 @@ def detect_restock_needs(
         if category_ids:
             domain.append(('categ_id', 'in', category_ids))
 
-        # Get products
+        # Get products (without computed fields first)
         products = client.search_read(
             'product.product',
             domain,
-            ['name', 'default_code', 'categ_id', 'qty_available',
-             'virtual_available', 'seller_ids'],
+            ['name', 'default_code', 'categ_id', 'seller_ids'],
             limit=500
         )
+
+        # Get stock quantities separately using stock.quant
+        for product in products:
+            product_id = product['id']
+
+            # Get stock quants for this product
+            quants = client.search_read(
+                'stock.quant',
+                [('product_id', '=', product_id)],
+                ['quantity', 'reserved_quantity']
+            )
+
+            # Calculate available quantity
+            qty_available = sum(q.get('quantity', 0) - q.get('reserved_quantity', 0) for q in quants)
+            total_qty = sum(q.get('quantity', 0) for q in quants)
+
+            product['qty_available'] = qty_available
+            product['virtual_available'] = qty_available  # Simplified for now
 
         if not products:
             return {
@@ -145,15 +162,19 @@ def detect_restock_needs(
             by_urgency[urgency]['total_qty_needed'] += prod.get('suggested_order_qty', 0)
 
         summary = {
-            'total_products': len(products_to_restock),
-            'analyzed_products': len(products),
+            'total_products': len(products),
+            'need_restock': len(products_to_restock),
+            'critical': len([p for p in products_to_restock if p['urgency_level'] == 'critical']),
             'by_urgency': by_urgency,
             'warehouse_id': warehouse_id or 'All'
         }
 
         return {
             'success': True,
-            'products_to_restock': products_to_restock,
+            'data': {
+                'products': products_to_restock,
+                'summary': summary
+            },
             'summary': summary,
             'error': None
         }
@@ -161,14 +182,14 @@ def detect_restock_needs(
     except PermissionError as e:
         return {
             'success': False,
-            'products_to_restock': None,
+            'data': None,
             'summary': None,
             'error': str(e)
         }
     except Exception as e:
         return {
             'success': False,
-            'products_to_restock': None,
+            'data': None,
             'summary': None,
             'error': f"Error detecting restock needs: {str(e)}"
         }
