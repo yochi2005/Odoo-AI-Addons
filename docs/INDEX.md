@@ -55,9 +55,47 @@
 
 ---
 
+### 4. [Guía de Configuración Funcional](./ODOO_FUNCTIONAL_SETUP_GUIDE.md)
+**Cómo hacer que Odoo funcione realmente** (800+ líneas)
+
+**Contenido:**
+- 📧 Configuración de correo saliente (SMTP con Gmail/Amazon SES)
+- 💰 Configuración de facturación electrónica (CFDI 4.0 México)
+- 🏢 Configuración de empresa y datos fiscales
+- 📦 Configuración de módulos (Ventas, Contabilidad, Inventario)
+- 🔧 Configuración de PAC y certificados SAT
+- 👥 Creación de datos maestros (clientes, productos, proveedores)
+- 🔄 Flujo completo: Cotización → Venta → Factura → Pago
+- ✅ Tests de verificación de funcionamiento
+- 🔍 Troubleshooting detallado
+- ✨ Mejores prácticas de operación
+
+**Para quién:** Usuarios y administradores que necesitan configurar Odoo para operación real.
+
+---
+
+### 5. [Guía de Deployment en Producción](./PRODUCTION_DEPLOYMENT_GUIDE.md)
+**Despliegue completo en AWS con configuración funcional** (1800+ líneas)
+
+**Contenido:**
+- ☁️ Infraestructura AWS completa (EC2, RDS, S3, SES, Route 53)
+- 🔐 Nginx + SSL con Let's Encrypt
+- 📧 Configuración de Amazon SES para envío de emails
+- 💼 Configuración completa de módulos para producción
+- 🇲🇽 Localización mexicana (CFDI 4.0, SAT, PAC)
+- 💾 Backups automatizados con S3
+- 📊 Monitoring con CloudWatch
+- ⚡ Optimización de performance
+- 💰 Estimación de costos AWS
+- 🔒 Mejores prácticas de seguridad
+
+**Para quién:** DevOps y administradores que despliegan Odoo en producción.
+
+---
+
 ## 📖 Documentación Técnica del Módulo
 
-### 4. [README del Módulo](../custom-addons/odoo_ai_tools/README.md)
+### 6. [README del Módulo](../custom-addons/odoo_ai_tools/README.md)
 **Documentación principal del módulo odoo_ai_tools**
 
 **Contenido:**
@@ -74,7 +112,7 @@
 
 ---
 
-### 5. [Guía de Instalación](../custom-addons/odoo_ai_tools/INSTALLATION.md)
+### 7. [Guía de Instalación](../custom-addons/odoo_ai_tools/INSTALLATION.md)
 **Instrucciones detalladas de instalación**
 
 **Contenido:**
@@ -104,6 +142,8 @@
 | [Quick Start](./QUICK_START.md#-instalación-express) | Instalación rápida | Principiante |
 | [Guía Completa - Sección 4](./ODOO_CLAUDE_INTEGRATION_COMPLETE_GUIDE.md#4-requisitos-y-preparación) | Instalación detallada | Intermedio |
 | [Installation Guide](../custom-addons/odoo_ai_tools/INSTALLATION.md) | Instalación oficial | Todos |
+| [Functional Setup Guide](./ODOO_FUNCTIONAL_SETUP_GUIDE.md) | Configuración funcional completa | Todos |
+| [Production Deployment](./PRODUCTION_DEPLOYMENT_GUIDE.md) | Deployment en AWS | Avanzado |
 
 ### Desarrollo
 
@@ -255,6 +295,24 @@
 ### "¿Cuáles son las mejores prácticas?"
 → [Guía Completa - Mejores Prácticas](./ODOO_CLAUDE_INTEGRATION_COMPLETE_GUIDE.md#10-mejores-prácticas)
 
+### "¿Cómo configuro el correo saliente (SMTP)?"
+→ [Functional Setup Guide - Configuración SMTP](./ODOO_FUNCTIONAL_SETUP_GUIDE.md#3-configuración-de-correo-saliente-smtp)
+
+### "¿Cómo configuro la facturación electrónica (México)?"
+→ [Functional Setup Guide - Configurar PAC](./ODOO_FUNCTIONAL_SETUP_GUIDE.md#65-configurar-pac-facturación-electrónica-méxico)
+
+### "¿Cómo hago que Odoo envíe facturas reales?"
+→ [Functional Setup Guide - Flujo Completo](./ODOO_FUNCTIONAL_SETUP_GUIDE.md#8-flujo-completo-cotización--venta--factura)
+
+### "¿Cómo despliego Odoo en producción (AWS)?"
+→ [Production Deployment Guide](./PRODUCTION_DEPLOYMENT_GUIDE.md)
+
+### "¿Los emails no se envían, qué hago?"
+→ [Functional Setup Guide - Troubleshooting](./ODOO_FUNCTIONAL_SETUP_GUIDE.md#121-los-correos-no-se-envían)
+
+### "¿El XML no se timbra, qué hago?"
+→ [Functional Setup Guide - Troubleshooting](./ODOO_FUNCTIONAL_SETUP_GUIDE.md#122-no-se-genera-el-xml-timbrado-méxico)
+
 ---
 
 ## 📝 Notas
@@ -269,7 +327,7 @@
 
 ### Mantenimiento
 
-Última actualización: 2025-12-08
+Última actualización: 2025-12-09
 
 ### Contribuciones
 
