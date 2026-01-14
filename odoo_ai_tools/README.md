@@ -4,40 +4,40 @@ AI-powered assistant for Odoo using **Claude** (Anthropic) with **tool calling**
 
 ---
 
-## 🎯 Features
+## Features
 
 This module integrates Claude AI with Odoo to enable natural language operations:
 
 ### 5 Intelligent Tools
 
-1. **📊 Sales Reports** - Generate sales reports from natural language
+1. **Sales Reports** - Generate sales reports from natural language
    - Group by product, customer, or salesperson
    - Flexible date ranges
    - Automatic calculations
 
-2. **📄 Invoice Creation** - Create draft invoices automatically
+2. **Invoice Creation** - Create draft invoices automatically
    - From recent sales orders
    - Batch invoice creation
    - Automatic line items
 
-3. **💰 Tax Deductions (Mexico)** - Suggest tax-deductible expenses
+3. **Tax Deductions (Mexico)** - Suggest tax-deductible expenses
    - SAT compliance
    - Automatic categorization
    - Deduction requirements
 
-4. **📋 Quotation Summary** - Intelligent quotation follow-up
+4. **Quotation Summary** - Intelligent quotation follow-up
    - Urgency analysis
    - Expiration tracking
    - Recommended actions
 
-5. **📦 Inventory Restock** - Detect products needing restock
+5. **Inventory Restock** - Detect products needing restock
    - Sales velocity analysis
    - Stock level monitoring
    - Suggested order quantities
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────┐
@@ -62,7 +62,7 @@ This module integrates Claude AI with Odoo to enable natural language operations
 
 ---
 
-## 📋 Requirements
+## Requirements
 
 - **Odoo**: 18.2+
 - **Python**: 3.12+
@@ -74,7 +74,7 @@ This module integrates Claude AI with Odoo to enable natural language operations
 
 ---
 
-## 🚀 Installation
+## Installation
 
 ### 1. Module is already created
 
@@ -103,7 +103,7 @@ source ../venv/bin/activate
 
 ---
 
-## 🔧 Configuration
+##Configuration
 
 ### 1. Get Anthropic API Key
 
@@ -128,7 +128,7 @@ You can provide the API key when creating a new conversation.
 
 ---
 
-## 💬 Usage
+##Usage
 
 ### Example 1: Sales Report
 
@@ -182,7 +182,7 @@ You can provide the API key when creating a new conversation.
 
 ---
 
-## 🔒 Security
+## Security
 
 ### Permission-Based Access
 
@@ -207,7 +207,7 @@ All tools respect Odoo permissions:
 
 ---
 
-## 📂 Module Structure
+## Module Structure
 
 ```
 odoo_ai_tools/
@@ -240,7 +240,7 @@ odoo_ai_tools/
 
 ---
 
-## 🛠️ Development
+## Development
 
 ### Adding a New Tool
 
@@ -304,7 +304,7 @@ ALL_TOOLS.append(MY_TOOL_DEFINITION)
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Error: "anthropic package not installed"
 
@@ -337,7 +337,7 @@ source ../venv/bin/activate
 
 ---
 
-## 📊 Testing
+## Testing
 
 ### Manual Testing
 
@@ -358,7 +358,7 @@ source ../venv/bin/activate
 
 ---
 
-## 🎓 Learn More
+## Learn More
 
 ### Claude API Documentation
 - https://docs.anthropic.com/
@@ -372,7 +372,7 @@ source ../venv/bin/activate
 
 ---
 
-## 📝 License
+## License
 
 LGPL-3
 
@@ -384,7 +384,7 @@ Created for Odoo 18.2 + Claude integration
 
 ---
 
-## 🚀 Roadmap
+## Roadmap
 
 Future improvements:
 
